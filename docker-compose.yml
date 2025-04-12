@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: finance-control-database
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: FC123456#
+      POSTGRES_DB: finance-control
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql # opcional: scripts de inicialização
+
+volumes:
+  postgres_data:
